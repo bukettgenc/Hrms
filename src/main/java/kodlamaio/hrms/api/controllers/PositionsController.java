@@ -2,6 +2,8 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.FieldError;
@@ -42,7 +44,7 @@ public class PositionsController {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions) {
-		Map<String, String> validationErrors = new HashMap()<String, String>();
+		Map<String, String> validationErrors = new HashMap<String, String>();
 		for (FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
